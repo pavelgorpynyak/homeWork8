@@ -4,10 +4,8 @@ public class Main {
 
     public static void methodOfLeapYearCalculation(int year) {
 
-        if (year % 4 == 0 || year % 400 == 0) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " Это високосный год!");
-        } else if (year % 100 == 0) {
-            System.out.println(year + " Это не високосный год!");
         } else {
             System.out.println(year + " Это не високосный год!");
         }
@@ -17,11 +15,11 @@ public class Main {
 
         if (clientOS == 1 && clientDeviseYear >= 2015) {
             System.out.println( "Пожалуйста установите приложение для Android по ссылке" );
-        } else if (clientOS != 1 && clientDeviseYear >=2015) {
+        } else if (clientOS == 0 && clientDeviseYear >=2015) {
             System.out.println( "Пожалуйста установите приложение для IOS по ссылке" );
         } else if (clientOS == 1 && clientDeviseYear < 2015) {
             System.out.println( "Пожалуйста установите облегченное приложение для Android по ссылке" );
-        } else if ( clientOS != 1 && clientDeviseYear < 2015) {
+        } else if ( clientOS == 0 && clientDeviseYear < 2015) {
             System.out.println( "Пожалуйста установите приложение для IOS по ссылке" );
         }
     }
@@ -41,13 +39,12 @@ public class Main {
 
     public static void main(String[] args) {
         // Задание 1
-        int year = 2022;
+        int year = 2020;
         methodOfLeapYearCalculation(year);
 
         // Задание 2
-        int clientOS = 1;
-        int currentYear = LocalDate.now().getYear();
-        int clientDeviseYear = currentYear;
+        int clientOS = 0;
+        int clientDeviseYear = LocalDate.now().getYear();
         installationOsAdviceMethod(clientOS,clientDeviseYear);
 
         // Задание 3
